@@ -1,0 +1,12 @@
+# Clean YouTube
+
+
+- [Vertical layout](/vertical) (each player 100% width)
+
+---
+
+## References
+
+- https://stackoverflow.com/q/79341243/117030
+- https://github.com/vidstack/player/issues/1445
+- https://github.com/vidstack/player/issues/1104#issuecomment-1908991856
