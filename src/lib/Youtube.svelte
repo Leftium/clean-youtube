@@ -1,5 +1,5 @@
 <script lang="ts">
-	const { id: youtubeId = 'dt-SqNL4z3w', mediaAspectRatio = 16 / 9, devMode = false } = $props();
+	const { id: youtubeId = 'dt-SqNL4z3w', mediaAspectRatio = 16 / 9, devMode = true } = $props();
 
 	const urlParams = new URLSearchParams({
 		autoplay: '0',

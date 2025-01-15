@@ -1,7 +1,7 @@
 # Clean YouTube
 
-
-- [Vertical layout](/vertical) (each player 100% width)
+- [Horizontal layout](/horizontal) (uniform height shared by all players)
+- [Vertical layout](/vertical) (uniform width shared by all players)
 
 ---
 

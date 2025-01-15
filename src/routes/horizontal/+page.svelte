@@ -23,21 +23,21 @@
 <style lang="scss">
 	main {
 		display: flex;
-		flex-direction: column;
-		width: min(100vw, 400px);
-		margin: auto;
+
+		justify-content: space-evenly;
+
+		height: 19vw;
 	}
 
 	.player-horizontal,
 	.player-vertical {
 		display: flex;
 		justify-content: space-evenly;
+		margin-block: 200px;
 
-		width: 100%;
+		height: 100%;
 
 		contain: size;
-
-		margin-block: 200px;
 
 		aspect-ratio: 16 / 9;
 	}
