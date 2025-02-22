@@ -1,5 +1,8 @@
 # Clean YouTube
 
+- [Fullscreen (landscape)](/fullscreen)
+- [Fullscreen (vertical)](/fullscreen?vertical)
+
 - [Horizontal layout](/horizontal) (uniform height shared by all players)
 - [Vertical layout](/vertical) (uniform width shared by all players)
 
@@ -7,6 +10,11 @@
 
 ## References
 
+- YouTube CSS hack
+
 - https://stackoverflow.com/q/79341243/117030
 - https://github.com/vidstack/player/issues/1445
 - https://github.com/vidstack/player/issues/1104#issuecomment-1908991856
+
+### Shrinking sticky header
+- https://codepen.io/pookagehayes/pen/LYojWEX?editors=1100

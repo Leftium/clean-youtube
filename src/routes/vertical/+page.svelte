@@ -8,24 +8,31 @@
 	</div>
 
 	<div class="player-vertical">
+		<Youtube id="IF_7SLHdreQ" mediaAspectRatio={1000 / 1778} />
+	</div>
+
+	<div class="player-vertical">
 		<Youtube mediaAspectRatio={1000 / 563} />
 	</div>
 
 	<div class="player-horizontal">
 		<Youtube id="IF_7SLHdreQ" mediaAspectRatio={1000 / 1778} />
 	</div>
-
-	<div class="player-vertical">
-		<Youtube id="IF_7SLHdreQ" mediaAspectRatio={1000 / 1778} />
-	</div>
 </main>
 
 <style lang="scss">
+	:global(html),
+	:global(body) {
+		margin: 0;
+	}
+
 	main {
 		display: flex;
 		flex-direction: column;
 		width: min(100vw, 400px);
 		margin: auto;
+
+		//border: 4px solid red;
 	}
 
 	.player-horizontal,

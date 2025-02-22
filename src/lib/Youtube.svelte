@@ -1,5 +1,10 @@
 <script lang="ts">
-	const { id: youtubeId = 'dt-SqNL4z3w', mediaAspectRatio = 16 / 9, devMode = true } = $props();
+	let {
+		id: youtubeId = 'dt-SqNL4z3w',
+		mediaAspectRatio = 16 / 9,
+		devMode = false,
+		devInfo = $bindable({})
+	} = $props();
 
 	const urlParams = new URLSearchParams({
 		autoplay: '0',
@@ -23,12 +28,33 @@
 		'gyroscope',
 		'picture-in-picture'
 	].join('; ');
+
+	let w = $state(0);
+	let h = $state(0);
+	let playerAspectRatio = $state(0);
+
+	$effect(() => {
+		playerAspectRatio = (w ?? h) ? w / h : 16 / 9;
+
+		devInfo = {
+			w,
+			h,
+			mediaAspectRatio,
+			playerAspectRatio
+		};
+	});
 </script>
 
-<youtube-player style:aspect-ratio={mediaAspectRatio} class={{ devMode }}>
+<youtube-player
+	style:aspect-ratio={playerAspectRatio}
+	style:height={playerAspectRatio > 1 ? '100%' : ''}
+	class={{ devMode }}
+	bind:clientWidth={w}
+	bind:clientHeight={h}
+>
 	<youtube-content
 		style:aspect-ratio={mediaAspectRatio}
-		style:width={mediaAspectRatio > 1 ? '100%' : ''}
+		style:width={mediaAspectRatio > playerAspectRatio ? '100%' : ''}
 	>
 		<iframe {src} title="" frameborder="0" {allow} allowfullscreen></iframe>
 	</youtube-content>
