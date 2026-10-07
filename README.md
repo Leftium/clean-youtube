@@ -1,38 +1,29 @@
-# sv
+# Clean YouTube
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+Archived SvelteKit experiment for fitting and cropping YouTube embeds across landscape and portrait videos and containers.
 
-## Creating a project
+The project explored a CSS-first approach without depending on the YouTube Player API. It includes test layouts for uniform-height, uniform-width, and fullscreen players.
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Findings
 
-```bash
-# create a new project in the current directory
-npx sv create
+- Keep the player/container geometry separate from the video's aspect ratio. A stable outer box with the video fitted or cropped inside avoids layout shifts and resize feedback loops.
+- The CSS-only approach needs the media aspect ratio up front. `Youtube.svelte` compares it with the rendered player aspect ratio to decide which dimension should fill the container.
+- `contain: size` was useful for isolating experimental player geometry.
+- The iframe is intentionally oversized with `height: calc(100% + 400px)` and clipped. This was a pragmatic experiment for cropping YouTube chrome/shading, not a general-purpose sizing constant.
+- Resizing exposed a feedback problem where the player could continually grow instead of shrinking again. Later player work reinforced the safer pattern: keep the player box fixed and change how the media fits inside it rather than deriving container size from rendered media.
+- Hiding/cropping the YouTube UI does not remove iframe behavior. YouTube's own overlays, controls, focus behavior, and browser-specific quirks can still affect the result.
 
-# create a new project in my-app
-npx sv create my-app
-```
+Demo routes in the app:
 
-## Developing
+- `/fullscreen`
+- `/fullscreen?vertical`
+- `/horizontal`
+- `/vertical`
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+The useful geometry work has since moved into [YouLoop](https://github.com/Leftium/youloop) and [vee-next](https://github.com/Leftium/vee-next).
 
-```bash
-npm run dev
+## References
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+- https://stackoverflow.com/q/79341243/117030
+- https://github.com/vidstack/player/issues/1445
+- https://github.com/vidstack/player/issues/1104#issuecomment-1908991856
